@@ -1,0 +1,7 @@
+.dummy{
+	color : black;
+}
+
+.disabledMouse :hover {
+	cursor: not-allowed;
+}

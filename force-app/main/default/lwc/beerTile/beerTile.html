@@ -1,0 +1,39 @@
+<template>
+    <template if:true={beerRecord}>
+        <lightning-card>
+            <div class="medicine" onclick={medicineClickHandler}>
+                <h1 slot="title" style="font-size: larger; height: 50px;">{beerRecord.Name}</h1>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <div class="slds-m-around_small">
+                            <div class="medImage">
+                                <img src={beerRecord.Image__c} width="150"/>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="horizontal-small">
+                        <div style="height: 60px;">
+                            <strong>Brand Name : </strong> {beerRecord.brewery_Name__c}
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="horizontal-small">
+                        <div style="font-size: large;">
+                            <strong>Price : </strong> <span>₹</span>{beerRecord.Price__c}
+                        </div>
+                    </lightning-layout-item>
+            </lightning-layout>
+            </div>
+            
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-var-m-top_small slds-var-m-bottom_small">
+                        <lightning-button label="Add To Cart" variant="brand" onclick={handleAddToCart}></lightning-button>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            
+        </lightning-card>
+    </template>
+</template>

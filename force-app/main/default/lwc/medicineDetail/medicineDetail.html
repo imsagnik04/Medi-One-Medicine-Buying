@@ -1,0 +1,117 @@
+<template>
+    <template if:false={medicine}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={medicine}>
+        <lightning-card>
+            <div slot="title">
+                <span>
+                    <lightning-button-icon icon-name="utility:chevronleft" alternative-text="Back" type="button"
+                        onclick={handleBack}></lightning-button-icon>
+                </span>
+                <span class="slds-m-around_medium" style="font-size: larger; font-weight:bold;">
+                    {medJSON.Name}
+                </span>
+            </div>
+
+            <div>
+                <lightning-layout>
+                    <lightning-layout-item size="6" padding="around-small" class="medicineImage">
+
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="12" padding="around-small">
+                                <div class="custom-box">
+                                    <img src={medJSON.Image__c} width="300" height="300">
+                                </div>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" padding="around-small">
+                                <div style="font-size: x-large">
+                                    <strong>Price : </strong> <span>₹</span>{medJSON.Price__c}
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="6" padding="around-small">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="12" padding="around-small">
+                                <div style="overflow:scroll; width: 100%; height: 300px;">
+                                    <lightning-formatted-rich-text
+                                        value={medJSON.Description__c}></lightning-formatted-rich-text>
+                                </div>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" padding="around-small">
+                                <div>
+                                    <lightning-layout>
+                                        <lightning-layout-item size="6" padding="around-small">
+                                            <span style="width: 100%;
+                                            height: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            border: none;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;">
+                                                <span style="width: 100%;
+                                                height: 100%;
+                                                padding: 0;
+                                                margin: 0;
+                                                border: none;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;"
+                                                class="disabledMouse minusBtn"><lightning-button label="-" title="Decrease Quantity" onclick={handleRemove} disabled={buttonDisabled}></lightning-button></span>
+
+                                                <span style="width: 100%;
+                                                height: 100%;
+                                                padding: 0;
+                                                margin: 0;
+                                                border: none;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                font-weight:bold;">{quantity}</span>
+
+                                                <span style="width: 100%;
+                                                height: 100%;
+                                                padding: 0;
+                                                margin: 0;
+                                                border: none;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;"><lightning-button label="+" title="Increase Quantity" onclick={handleAdd}></lightning-button></span>
+                                            </span>
+                                        </lightning-layout-item>
+
+                                        <lightning-layout-item size="6" padding="around-small">
+                                            <span style="width: 100%;
+                                            height: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            border: none;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;">
+                                                <lightning-button label="Add To Cart" variant="brand"
+                                                    title="Add To Cart" onclick={handleAddToCart}></lightning-button>
+                                            </span>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <!-- <lightning-button 
+                          variant="base"
+                          label="Add to Cart" 
+                          onclick={handleClick} 
+                        ></lightning-button> -->
+                        <!-- <div>{medJSON.Description__c}</div> -->
+
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </lightning-card>
+    </template>
+</template>

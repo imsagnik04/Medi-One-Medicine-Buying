@@ -1,0 +1,9 @@
+.dummy{
+	color : black;
+}
+
+.badge-style {
+	background-color: var(--slds-c-badge-color-background, #0A32C6);
+	color: var(--slds-c-badge-text-color, white);
+	position: absolute;
+}

@@ -1,0 +1,51 @@
+<template>
+    <lightning-card variant="base">
+        
+        <!--More icon please visit : https://www.lightningdesignsystem.com/icons/ -->
+        <h1 slot="title" style="font-size: larger; font-weight: bold;">
+            <span class="slds-var-p-around_small">
+                <lightning-icon icon-name="standard:medication" alternative-text="Med image" size='large'></lightning-icon>
+            </span>
+            <span>Buy Medicines</span>
+        </h1>
+        <div slot="actions">
+            <div style=" padding: 10px;
+            margin-left: 130px;
+            direction: rtl;">
+                <lightning-badge label={itemsinCart}
+                  class="badge-style"
+                ></lightning-badge>
+                <a href="JavaScript:void(0);" onclick={navigateToCartDetail}>
+                    <img src="https://cdn-icons-png.flaticon.com/128/3144/3144456.png" height="50" width="50"
+                    style="margin-right: 10px;"/>
+                </a>
+            </div>
+        </div>
+        <div style="background: white; border-radius: 10px;">
+            <div class="slds-m-left_small slds-m-right_small slds-m-bottom_small">
+                <c-beer-search onsearch={handleEvent}></c-beer-search>
+            </div>
+            <div class="slds-m-left_small slds-m-right_small slds-m-bottom_small">
+                <template if:true={showSearchedMedicines}>
+                    <div class="slds-grid slds-wrap">
+                        <template for:each={beerRecords} for:item="item">
+                            <div class="slds-col slds-size_1-of-3 slds-p-around_x-small" key={item.Id}>
+                                <c-beer-tile beer-record={item} oncart={addToCart} onmedicineclick={handleMedicineClick}></c-beer-tile>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template if:false={showSearchedMedicines}>
+                    <template if:true={selectedMedId}>
+                        <c-medicine-detail med-id={selectedMedId} onbackclick={handleBackClick} onquantitychange={handleChangedQuantity} oncart={addToCart}></c-medicine-detail>
+                    </template>
+                    <template if:false={selectedMedId}>
+                        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+    
+</template>

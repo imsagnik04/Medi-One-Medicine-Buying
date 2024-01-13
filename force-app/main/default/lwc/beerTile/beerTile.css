@@ -1,0 +1,19 @@
+.dummy {
+	color: black;
+}
+
+img {
+	width: 100%;
+	height: 150px;
+	object-fit: contain;
+	object-position: top;
+}
+
+.medImage :hover {
+	transform: scale(1.1);
+	border: lightgray 1px;
+}
+
+.medicine :hover {
+	cursor: pointer;
+}

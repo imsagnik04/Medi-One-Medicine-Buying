@@ -1,0 +1,77 @@
+<template>
+    <div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-4 slds-m-top_small">
+                <a href="JavaScript:void(0);">
+                    {item.Beer__r.Name}
+                </a>
+            </div>
+
+            <div class="slds-col slds-size_1-of-4 slds-m-top_small">
+                <lightning-formatted-number 
+                    currency-code="INR"
+                    format-style="currency"
+                    currency-display-as="symbol"
+                    maximum-fraction-digits="2"
+                    value={item.Item_Amount__c} >
+                </lightning-formatted-number>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-m-top_small">
+                <!-- <lightning-input type="number" 
+                    value={item.Item_Quantity__c} 
+                    min="1"
+                    step="1"
+                >
+                </lightning-input> -->
+
+                <lightning-layout>
+                    <lightning-layout-item size="12">
+                        <span style="width: 100%;
+                        height: 100%;
+                        padding: 0;
+                        margin: 0;
+                        border: none;
+                        display: flex;
+                        align-items: right;">
+                            <span style="width: 50%;
+                            height: 100%;
+                            padding: 0;
+                            margin: 0;
+                            border: none;
+                            display: flex;
+                            align-items: right;"
+                            class="disabledMouse minusBtn"><lightning-button label="-" title="Decrease Quantity" onclick={handleRemove} disabled={buttonDisabled}></lightning-button></span>
+
+                            <span style="height: 100%;
+                            padding: 0;
+                            margin: 0;
+                            border: none;
+                            display: flex;
+                            align-items: right;
+                            justify-content: right;
+                            font-weight:bold;">{item.Item_Quantity__c}</span>
+
+                            <span style="width: 50%;
+                            height: 100%;
+                            padding: 0;
+                            margin: 0;
+                            border: none;
+                            display: flex;
+                            align-items: right;
+                            justify-content: right;"><lightning-button label="+" title="Increase Quantity" onclick={handleAdd}></lightning-button></span>
+                        </span>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-p-left_x-large slds-m-top_small">
+                <lightning-button value="Delete" label="Delete" 
+                        icon-name="action:delete" 
+                        variant="destructive"
+                        onclick={handleDelete}
+                        >
+
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>
